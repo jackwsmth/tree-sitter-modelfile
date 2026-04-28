@@ -1,0 +1,129 @@
+[
+  {
+    "type": "adapter_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "from_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "instruction",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "adapter_instruction",
+          "named": true
+        },
+        {
+          "type": "from_instruction",
+          "named": true
+        },
+        {
+          "type": "message_instruction",
+          "named": true
+        },
+        {
+          "type": "parameter_instruction",
+          "named": true
+        },
+        {
+          "type": "requires_instruction",
+          "named": true
+        },
+        {
+          "type": "system_instruction",
+          "named": true
+        },
+        {
+          "type": "template_instruction",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "message_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "parameter_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "requires_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "instruction",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "system_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "template_instruction",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "ADAPTER",
+    "named": false
+  },
+  {
+    "type": "FROM",
+    "named": false
+  },
+  {
+    "type": "MESSAGE",
+    "named": false
+  },
+  {
+    "type": "PARAMETER",
+    "named": false
+  },
+  {
+    "type": "REQUIRES",
+    "named": false
+  },
+  {
+    "type": "SYSTEM",
+    "named": false
+  },
+  {
+    "type": "TEMPLATE",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  }
+]
