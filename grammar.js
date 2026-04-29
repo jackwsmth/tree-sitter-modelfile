@@ -11,7 +11,7 @@ export default grammar({
   name: "modelfile",
 
   rules: {
-    source_file: ($) => repeat($.instruction),
+    source_file: ($) => repeat(seq($.instruction, $.newline)),
 
     instruction: ($) =>
       choice(
@@ -44,8 +44,9 @@ export default grammar({
     )
     */
 
+    newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
 
-  extras: ($) => [/\s/, $.comment],
+  extras: ($) => [/\s+/, $.comment],
 });
