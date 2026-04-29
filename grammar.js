@@ -24,11 +24,6 @@ export default grammar({
         $.adapter_instruction,
       ),
 
-    // could split keywords into their categories, and then abstract them.
-    // so like single val keywords, double val keywords, triple quote keywords
-    // e.g. single_value_instruction: ($) => seq(choice("FROM", "REQUIRES", "ADAPTER")),
-    // single_value_keywords: ($) => choice("FROM", "REQUIRES", "ADAPTER")
-
     from_instruction: ($) => seq("FROM", $.argument),
 
     parameter_instruction: ($) =>
@@ -39,12 +34,6 @@ export default grammar({
     system_instruction: ($) => seq("SYSTEM", $.multiline_string),
     license_instruction: ($) => seq("LICENSE", $.multiline_string),
     adapter_instruction: ($) => seq("ADAPTER", $.argument),
-
-    /*
-    single_value_instruction: ($) => seq(
-      from_instruction: ($) => seq("FROM", $._string),
-    )
-    */
 
     argument: ($) => token(/[^\s]+/),
     parameter_value: ($) => choice($.number, $.quoted_string),
