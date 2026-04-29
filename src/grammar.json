@@ -12,8 +12,8 @@
             "name": "instruction"
           },
           {
-            "type": "STRING",
-            "value": "\n"
+            "type": "SYMBOL",
+            "name": "newline"
           }
         ]
       }
@@ -48,6 +48,10 @@
         {
           "type": "SYMBOL",
           "name": "adapter_instruction"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "license_instruction"
         }
       ]
     },
@@ -59,11 +63,8 @@
           "value": "FROM"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         }
       ]
     },
@@ -75,18 +76,12 @@
           "value": "PARAMETER"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "parameter_value"
         }
       ]
     },
@@ -98,11 +93,8 @@
           "value": "REQUIRES"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         }
       ]
     },
@@ -114,18 +106,12 @@
           "value": "MESSAGE"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         }
       ]
     },
@@ -137,11 +123,8 @@
           "value": "TEMPLATE"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "\"\"\"([\\s\\S]*?)\"\"\""
-          }
+          "type": "SYMBOL",
+          "name": "multiline_string"
         }
       ]
     },
@@ -153,11 +136,21 @@
           "value": "SYSTEM"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "\"\"\"([\\s\\S]*?)\"\"\""
-          }
+          "type": "SYMBOL",
+          "name": "multiline_string"
+        }
+      ]
+    },
+    "license_instruction": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "LICENSE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiline_string"
         }
       ]
     },
@@ -169,13 +162,71 @@
           "value": "ADAPTER"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
+          "type": "SYMBOL",
+          "name": "argument"
         }
       ]
+    },
+    "argument": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\s]+"
+      }
+    },
+    "parameter_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "quoted_string"
+        }
+      ]
+    },
+    "number": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "-?\\d+(\\.\\d+)?"
+      }
+    },
+    "quoted_string": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\"[^\"]*\""
+      }
+    },
+    "multiline_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\"\"\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": ".|\\n"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\"\"\""
+        }
+      ]
+    },
+    "newline": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\n"
+      }
     },
     "comment": {
       "type": "TOKEN",
@@ -188,7 +239,7 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "[ \\t]"
+      "value": "\\s+"
     },
     {
       "type": "SYMBOL",
