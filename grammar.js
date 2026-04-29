@@ -35,9 +35,9 @@ export default grammar({
       seq("PARAMETER", $.argument, $.parameter_value),
     requires_instruction: ($) => seq("REQUIRES", $.argument),
     message_instruction: ($) => seq("MESSAGE", $.argument, $.argument),
-    template_instruction: ($) => seq("TEMPLATE", token(/"""([\s\S]*?)"""/)),
-    system_instruction: ($) => seq("SYSTEM", token(/"""([\s\S]*?)"""/)),
-    license_instruction: ($) => seq("LICENSE", token(/"""([\s\S]*?)"""/)),
+    template_instruction: ($) => seq("TEMPLATE", $.multiline_string),
+    system_instruction: ($) => seq("SYSTEM", $.multiline_string),
+    license_instruction: ($) => seq("LICENSE", $.multiline_string),
     adapter_instruction: ($) => seq("ADAPTER", $.argument),
 
     /*
@@ -50,6 +50,7 @@ export default grammar({
     parameter_value: ($) => choice($.number, $.quoted_string),
     number: ($) => token(/-?\d+(\.\d+)?/),
     quoted_string: ($) => token(/"[^"]*"/),
+    multiline_string: ($) => token(/"""([\s\S]*?)"""/),
     newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
