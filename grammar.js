@@ -31,7 +31,8 @@ export default grammar({
 
     from_instruction: ($) => seq("FROM", $.argument),
 
-    parameter_instruction: ($) => seq("PARAMETER", $.argument, token(/[^\n]+/)),
+    parameter_instruction: ($) =>
+      seq("PARAMETER", $.argument, $.parameter_value),
     requires_instruction: ($) => seq("REQUIRES", $.argument),
     message_instruction: ($) => seq("MESSAGE", $.argument, $.argument),
     template_instruction: ($) => seq("TEMPLATE", token(/"""([\s\S]*?)"""/)),
@@ -46,6 +47,9 @@ export default grammar({
     */
 
     argument: ($) => token(/[^\s]+/),
+    parameter_value: ($) => choice($.number, $.quoted_string),
+    number: ($) => token(/-?\d+(\.\d+)?/),
+    quoted_string: ($) => token(/"[^"]*"/),
     newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
