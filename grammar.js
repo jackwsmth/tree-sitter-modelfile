@@ -22,6 +22,7 @@ export default grammar({
         $.template_instruction,
         $.system_instruction,
         $.adapter_instruction,
+        $.license_instruction
       ),
 
     from_instruction: ($) => seq("FROM", $.argument),
