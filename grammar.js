@@ -29,14 +29,15 @@ export default grammar({
     // e.g. single_value_instruction: ($) => seq(choice("FROM", "REQUIRES", "ADAPTER")),
     // single_value_keywords: ($) => choice("FROM", "REQUIRES", "ADAPTER")
 
-    from_instruction: ($) => seq("FROM", token(/.*/)),
-    parameter_instruction: ($) => seq("PARAMETER", token(/.*/), token(/.*/)),
-    requires_instruction: ($) => seq("REQUIRES", token(/.*/)),
-    message_instruction: ($) => seq("MESSAGE", token(/.*/), token(/.*/)),
+    from_instruction: ($) => seq("FROM", $.argument),
+
+    parameter_instruction: ($) => seq("PARAMETER", $.argument, token(/[^\n]+/)),
+    requires_instruction: ($) => seq("REQUIRES", $.argument),
+    message_instruction: ($) => seq("MESSAGE", $.argument, $.argument),
     template_instruction: ($) => seq("TEMPLATE", token(/"""([\s\S]*?)"""/)),
     system_instruction: ($) => seq("SYSTEM", token(/"""([\s\S]*?)"""/)),
     license_instruction: ($) => seq("LICENSE", token(/"""([\s\S]*?)"""/)),
-    adapter_instruction: ($) => seq("ADAPTER", token(/.*/)),
+    adapter_instruction: ($) => seq("ADAPTER", $.argument),
 
     /*
     single_value_instruction: ($) => seq(
@@ -44,6 +45,7 @@ export default grammar({
     )
     */
 
+    argument: () => token(/[^\s]+/),
     newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
