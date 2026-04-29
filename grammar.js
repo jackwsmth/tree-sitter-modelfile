@@ -39,7 +39,7 @@ export default grammar({
     parameter_value: ($) => choice($.number, $.quoted_string),
     number: ($) => token(/-?\d+(\.\d+)?/),
     quoted_string: ($) => token(/"[^"]*"/),
-    multiline_string: ($) => token(/"""([\s\S]*?)"""/),
+    multiline_string: ($) => seq('"""', repeat(/.|\n/), '"""'),
     newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
