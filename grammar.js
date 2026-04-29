@@ -45,7 +45,7 @@ export default grammar({
     )
     */
 
-    argument: () => token(/[^\s]+/),
+    argument: ($) => token(/[^\s]+/),
     newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
