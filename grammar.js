@@ -11,9 +11,9 @@ export default grammar({
   name: "modelfile",
 
   rules: {
-    source_file: ($) => repeat(seq($.instruction, $.newline)),
+    source_file: ($) => repeat(seq($._instruction, $._newline)),
 
-    instruction: ($) =>
+    _instruction: ($) =>
       choice(
         $.from_instruction,
         $.parameter_instruction,
@@ -41,7 +41,7 @@ export default grammar({
     number: ($) => token(/-?\d+(\.\d+)?/),
     quoted_string: ($) => token(/"[^"]*"/),
     multiline_string: ($) => seq('"""', repeat(/.|\n/), '"""'),
-    newline: ($) => token(/\n/),
+    _newline: ($) => token(/\n/),
     comment: ($) => token(/#[^\n]*/),
   },
 
