@@ -25,7 +25,7 @@ export default grammar({
         $.license_instruction
       ),
 
-    from_instruction: ($) => seq("FROM", $.argument),
+    from_instruction: ($) => seq("FROM", $.model_source),
 
     parameter_instruction: ($) =>
       seq("PARAMETER", $.argument, $.parameter_value),
@@ -34,7 +34,13 @@ export default grammar({
     template_instruction: ($) => seq("TEMPLATE", $.multiline_string),
     system_instruction: ($) => seq("SYSTEM", $.multiline_string),
     license_instruction: ($) => seq("LICENSE", $.multiline_string),
-    adapter_instruction: ($) => seq("ADAPTER", $.argument),
+    adapter_instruction: ($) => seq("ADAPTER", $.file_path),
+
+    model_source: ($) => choice($.model_ref, $.model_ref_with_tag, $.file_path),
+    
+    model_ref: ($) => token(/[a-zA-Z0-9_.-]+/),
+    model_ref_with_tag: ($) => token(/[a-zA-Z0-9_.-]+:[a-zA-Z0-9_.-]+/),
+    file_path: ($) => token(/(\.\/|\/)[^\s]+/),
 
     argument: ($) => token(/[^\s]+/),
     parameter_value: ($) => choice($.number, $.quoted_string),
