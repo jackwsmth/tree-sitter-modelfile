@@ -26,7 +26,6 @@ export default grammar({
       ),
 
     from_instruction: ($) => seq("FROM", $.model_source),
-
     parameter_instruction: ($) =>
       seq("PARAMETER", $.argument, $.parameter_value),
     requires_instruction: ($) => seq("REQUIRES", $.argument),
