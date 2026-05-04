@@ -27,7 +27,7 @@ export default grammar({
 
     from_instruction: ($) => seq("FROM", $.model_source),
     parameter_instruction: ($) =>
-      seq("PARAMETER", $.argument, $.parameter_value),
+      seq("PARAMETER", $.parameter, $.parameter_value),
     requires_instruction: ($) => seq("REQUIRES", $.version),
     message_instruction: ($) => seq("MESSAGE", $.argument, $.argument),
     template_instruction: ($) => seq("TEMPLATE", $.multiline_string),
@@ -41,6 +41,19 @@ export default grammar({
     model_ref_with_tag: ($) => token(/[a-zA-Z0-9_.-]+:[a-zA-Z0-9_.-]+/),
     file_path: ($) => token(/(\.\/|\/)[^\s]+/),
     version: ($) => token(/\d+\.\d+\.\d+/),
+
+    parameter: ($) => choice(
+      "num_ctx",
+      "repeat_last_n",
+      "repeat_penalty",
+      "temperature",
+      "seed",
+      "stop",
+      "num_predict",
+      "top_k",
+      "top_p",
+      "min_p"
+    ),
 
     argument: ($) => token(/[^\s]+/),
     parameter_value: ($) => choice($.number, $.quoted_string),
