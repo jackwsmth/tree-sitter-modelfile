@@ -9,16 +9,16 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "instruction"
+            "name": "_instruction"
           },
           {
             "type": "SYMBOL",
-            "name": "newline"
+            "name": "_newline"
           }
         ]
       }
     },
-    "instruction": {
+    "_instruction": {
       "type": "CHOICE",
       "members": [
         {
@@ -64,7 +64,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "argument"
+          "name": "model_source"
         }
       ]
     },
@@ -77,7 +77,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "argument"
+          "name": "parameter"
         },
         {
           "type": "SYMBOL",
@@ -94,7 +94,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "argument"
+          "name": "version"
         }
       ]
     },
@@ -163,7 +163,97 @@
         },
         {
           "type": "SYMBOL",
-          "name": "argument"
+          "name": "file_path"
+        }
+      ]
+    },
+    "model_source": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "model_ref"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "model_ref_with_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "file_path"
+        }
+      ]
+    },
+    "model_ref": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z0-9_.-]+"
+      }
+    },
+    "model_ref_with_tag": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z0-9_.-]+:[a-zA-Z0-9_.-]+"
+      }
+    },
+    "file_path": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "(\\.\\/|\\/)[^\\s]+"
+      }
+    },
+    "version": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\d+\\.\\d+\\.\\d+"
+      }
+    },
+    "parameter": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "num_ctx"
+        },
+        {
+          "type": "STRING",
+          "value": "repeat_last_n"
+        },
+        {
+          "type": "STRING",
+          "value": "repeat_penalty"
+        },
+        {
+          "type": "STRING",
+          "value": "temperature"
+        },
+        {
+          "type": "STRING",
+          "value": "seed"
+        },
+        {
+          "type": "STRING",
+          "value": "stop"
+        },
+        {
+          "type": "STRING",
+          "value": "num_predict"
+        },
+        {
+          "type": "STRING",
+          "value": "top_k"
+        },
+        {
+          "type": "STRING",
+          "value": "top_p"
+        },
+        {
+          "type": "STRING",
+          "value": "min_p"
         }
       ]
     },
@@ -221,7 +311,7 @@
         }
       ]
     },
-    "newline": {
+    "_newline": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",

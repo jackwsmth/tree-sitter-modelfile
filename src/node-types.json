@@ -8,7 +8,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument",
+          "type": "file_path",
           "named": true
         }
       ]
@@ -23,50 +23,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "instruction",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "adapter_instruction",
-          "named": true
-        },
-        {
-          "type": "from_instruction",
-          "named": true
-        },
-        {
-          "type": "license_instruction",
-          "named": true
-        },
-        {
-          "type": "message_instruction",
-          "named": true
-        },
-        {
-          "type": "parameter_instruction",
-          "named": true
-        },
-        {
-          "type": "requires_instruction",
-          "named": true
-        },
-        {
-          "type": "system_instruction",
-          "named": true
-        },
-        {
-          "type": "template_instruction",
+          "type": "model_source",
           "named": true
         }
       ]
@@ -103,7 +60,35 @@
     }
   },
   {
+    "type": "model_source",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "file_path",
+          "named": true
+        },
+        {
+          "type": "model_ref",
+          "named": true
+        },
+        {
+          "type": "model_ref_with_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "multiline_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "parameter",
     "named": true,
     "fields": {}
   },
@@ -116,7 +101,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument",
+          "type": "parameter",
           "named": true
         },
         {
@@ -154,7 +139,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument",
+          "type": "version",
           "named": true
         }
       ]
@@ -170,11 +155,35 @@
       "required": false,
       "types": [
         {
-          "type": "instruction",
+          "type": "adapter_instruction",
           "named": true
         },
         {
-          "type": "newline",
+          "type": "from_instruction",
+          "named": true
+        },
+        {
+          "type": "license_instruction",
+          "named": true
+        },
+        {
+          "type": "message_instruction",
+          "named": true
+        },
+        {
+          "type": "parameter_instruction",
+          "named": true
+        },
+        {
+          "type": "requires_instruction",
+          "named": true
+        },
+        {
+          "type": "system_instruction",
+          "named": true
+        },
+        {
+          "type": "template_instruction",
           "named": true
         }
       ]
@@ -256,8 +265,28 @@
     "extra": true
   },
   {
-    "type": "newline",
+    "type": "file_path",
     "named": true
+  },
+  {
+    "type": "min_p",
+    "named": false
+  },
+  {
+    "type": "model_ref",
+    "named": true
+  },
+  {
+    "type": "model_ref_with_tag",
+    "named": true
+  },
+  {
+    "type": "num_ctx",
+    "named": false
+  },
+  {
+    "type": "num_predict",
+    "named": false
   },
   {
     "type": "number",
@@ -265,6 +294,38 @@
   },
   {
     "type": "quoted_string",
+    "named": true
+  },
+  {
+    "type": "repeat_last_n",
+    "named": false
+  },
+  {
+    "type": "repeat_penalty",
+    "named": false
+  },
+  {
+    "type": "seed",
+    "named": false
+  },
+  {
+    "type": "stop",
+    "named": false
+  },
+  {
+    "type": "temperature",
+    "named": false
+  },
+  {
+    "type": "top_k",
+    "named": false
+  },
+  {
+    "type": "top_p",
+    "named": false
+  },
+  {
+    "type": "version",
     "named": true
   }
 ]
