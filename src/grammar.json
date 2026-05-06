@@ -107,7 +107,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "argument"
+          "name": "role"
         },
         {
           "type": "SYMBOL",
@@ -254,6 +254,23 @@
         {
           "type": "STRING",
           "value": "min_p"
+        }
+      ]
+    },
+    "role": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "system"
+        },
+        {
+          "type": "STRING",
+          "value": "user"
+        },
+        {
+          "type": "STRING",
+          "value": "assistant"
         }
       ]
     },

@@ -55,6 +55,10 @@
         {
           "type": "argument",
           "named": true
+        },
+        {
+          "type": "role",
+          "named": true
         }
       ]
     }
@@ -144,6 +148,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "role",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -260,6 +269,10 @@
     "named": true
   },
   {
+    "type": "assistant",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
@@ -313,6 +326,10 @@
     "named": false
   },
   {
+    "type": "system",
+    "named": false
+  },
+  {
     "type": "temperature",
     "named": false
   },
@@ -322,6 +339,10 @@
   },
   {
     "type": "top_p",
+    "named": false
+  },
+  {
+    "type": "user",
     "named": false
   },
   {
