@@ -1,0 +1,11 @@
+===================
+Adapter Instruction - adapter path
+===================
+
+ADAPTER ./path-to-model
+
+---
+
+(source_file
+  (adapter_instruction
+      (file_path)))
