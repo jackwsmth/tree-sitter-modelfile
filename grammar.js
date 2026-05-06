@@ -42,18 +42,19 @@ export default grammar({
     file_path: ($) => token(/(\.\/|\/)[^\s]+/),
     version: ($) => token(/\d+\.\d+\.\d+/),
 
-    parameter: ($) => choice(
-      "num_ctx",
-      "repeat_last_n",
-      "repeat_penalty",
-      "temperature",
-      "seed",
-      "stop",
-      "num_predict",
-      "top_k",
-      "top_p",
-      "min_p"
-    ),
+    parameter: ($) =>
+      choice(
+        "num_ctx",
+        "repeat_last_n",
+        "repeat_penalty",
+        "temperature",
+        "seed",
+        "stop",
+        "num_predict",
+        "top_k",
+        "top_p",
+        "min_p",
+      ),
 
     argument: ($) => token(/[^\s]+/),
     parameter_value: ($) => choice($.number, $.quoted_string),
