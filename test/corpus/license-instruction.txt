@@ -1,0 +1,25 @@
+===================
+License Instruction - single line
+===================
+
+LICENSE """MIT"""
+
+---
+
+(source_file
+  (license_instruction
+    (multiline_string)))
+
+===================
+License Instruction - multiple lines
+===================
+
+LICENSE """
+MIT
+"""
+
+---
+
+(source_file
+  (license_instruction
+    (multiline_string)))
