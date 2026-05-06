@@ -1,0 +1,47 @@
+===================
+From Instruction - model
+===================
+
+FROM model
+
+---
+
+(source_file
+  (from_instruction
+    (model_source
+      (model_ref))))
+
+===================
+From Instruction - model with tag
+===================
+
+FROM model:tag
+
+---
+
+(source_file
+  (from_instruction
+    (model_source
+      (model_ref_with_tag))))
+
+===================
+From Instruction - model path
+===================
+
+FROM ./path-to-model
+
+---
+
+(source_file
+  (from_instruction
+    (model_source
+      (file_path))))
+
+===================
+From Instruction - invalid characters
+:error
+===================
+
+FROM !@£$%
+
+---
