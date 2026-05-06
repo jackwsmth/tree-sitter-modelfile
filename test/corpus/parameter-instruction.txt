@@ -1,0 +1,50 @@
+===================
+Parameter Instruction - argument and integer value
+===================
+
+PARAMETER num_ctx 4096
+
+---
+
+(source_file
+  (parameter_instruction
+    (parameter)
+    (parameter_value
+      (number))))
+
+===================
+Parameter Instruction - argument and float value
+===================
+
+PARAMETER temperature 0.7
+
+---
+
+(source_file
+  (parameter_instruction
+    (parameter)
+    (parameter_value
+      (number))))
+
+===================
+Parameter Instruction - argument and string value
+===================
+
+PARAMETER stop "AI Assistant:"
+
+---
+
+(source_file
+  (parameter_instruction
+    (parameter)
+    (parameter_value
+      (quoted_string))))
+
+===================
+Parameter Instruction - invalid argument
+:error
+===================
+
+PARAMETER hello 1
+
+---
