@@ -29,7 +29,7 @@ export default grammar({
     parameter_instruction: ($) =>
       seq("PARAMETER", $.parameter, $.parameter_value),
     requires_instruction: ($) => seq("REQUIRES", $.version),
-    message_instruction: ($) => seq("MESSAGE", $.argument, $.argument),
+    message_instruction: ($) => seq("MESSAGE", $.role, $.argument),
     template_instruction: ($) => seq("TEMPLATE", $.multiline_string),
     system_instruction: ($) => seq("SYSTEM", $.multiline_string),
     license_instruction: ($) => seq("LICENSE", $.multiline_string),
@@ -55,6 +55,8 @@ export default grammar({
         "top_p",
         "min_p",
       ),
+
+    role: ($) => choice("system", "user", "assistant"),
 
     argument: ($) => token(/[^\s]+/),
     parameter_value: ($) => choice($.number, $.quoted_string),
