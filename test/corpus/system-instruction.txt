@@ -1,0 +1,25 @@
+===================
+System Instruction - single line
+===================
+
+SYSTEM """Hello"""
+
+---
+
+(source_file
+  (system_instruction
+    (multiline_string)))
+
+===================
+System Instruction - multiple lines
+===================
+
+SYSTEM """Hello.
+Prompt like this.
+"""
+
+---
+
+(source_file
+  (system_instruction
+    (multiline_string)))
