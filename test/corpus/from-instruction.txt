@@ -45,3 +45,21 @@ From Instruction - invalid characters
 FROM !@£$%
 
 ---
+
+===================
+From Instruction - model contains spaces
+:error
+===================
+
+FROM model 4
+
+---
+
+===================
+From Instruction - model with tag contains spaces
+:error
+===================
+
+FROM model:latest 4
+
+---
