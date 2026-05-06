@@ -1,0 +1,20 @@
+===================
+Requires Instruction - version number
+===================
+
+REQUIRES 0.1.0
+
+---
+
+(source_file
+  (requires_instruction
+    (version)))
+
+===================
+Requires Instruction - invalid value
+:error
+===================
+
+REQUIRES hello
+
+---
